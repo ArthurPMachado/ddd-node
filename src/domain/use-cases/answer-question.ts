@@ -1,5 +1,5 @@
-import { Answer } from "../entities/answer";
 import { IAnswerQuestionUseCaseRequest } from "./interfaces/IAnswerQuestionUseCase";
+import { Answer } from "../entities/answer";
 
 export class AnswerQuestionUseCase {
   execute({instructorId, questionId, content}: IAnswerQuestionUseCaseRequest) {
