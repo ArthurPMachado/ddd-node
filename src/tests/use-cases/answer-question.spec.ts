@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { AnswerQuestionUseCase } from '../../domain/use-cases/answer-question'
+import { AnswerQuestionUseCase } from '@/domain/use-cases/answer-question'
 import { IAnswersRepository } from '@/domain/repositories/interfaces/answers-repository'
 import { Answer } from '@/domain/entities/answer'
 
