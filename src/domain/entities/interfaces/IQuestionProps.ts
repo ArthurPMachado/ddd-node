@@ -1,5 +1,5 @@
-import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-import { Slug } from "../value-objects/slug"
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { Slug } from '../value-objects/slug'
 
 export interface IQuestionProps {
   authorId: UniqueEntityID

@@ -1,20 +1,23 @@
-import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-import { IQuestionProps } from "./interfaces/IQuestionProps"
-import { Entity } from "@/core/entities/entity"
-import { Optional } from "@/core/types/optional"
-import dayjs from "dayjs"
-import { Slug } from "./value-objects/slug"
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { IQuestionProps } from './interfaces/IQuestionProps'
+import { Entity } from '@/core/entities/entity'
+import { Optional } from '@/core/types/optional'
+import dayjs from 'dayjs'
+import { Slug } from './value-objects/slug'
 
 export class Question extends Entity<IQuestionProps> {
   static create(
-    props: Optional<IQuestionProps, 'createdAt' | 'slug'>, 
-    id?: UniqueEntityID
+    props: Optional<IQuestionProps, 'createdAt' | 'slug'>,
+    id?: UniqueEntityID,
   ) {
-    const question = new Question({
-      ...props,
-      slug: props.slug ?? Slug.createFromText(props.title),
-      createdAt: new Date()
-    }, id)
+    const question = new Question(
+      {
+        ...props,
+        slug: props.slug ?? Slug.createFromText(props.title),
+        createdAt: new Date(),
+      },
+      id,
+    )
 
     return question
   }
@@ -27,8 +30,20 @@ export class Question extends Entity<IQuestionProps> {
     return this.props.bestAnswerId
   }
 
+  set bestAnswerId(bestAnswerId: UniqueEntityID | undefined) {
+    this.props.bestAnswerId = bestAnswerId
+    this.touch()
+  }
+
   get title() {
     return this.props.title
+  }
+
+  set title(title: string) {
+    this.props.title = title
+    this.props.slug = Slug.createFromText(title)
+
+    this.touch()
   }
 
   get slug() {
@@ -37,6 +52,11 @@ export class Question extends Entity<IQuestionProps> {
 
   get content() {
     return this.props.content
+  }
+
+  set content(content: string) {
+    this.props.content = content
+    this.touch()
   }
 
   get createdAt() {
@@ -52,30 +72,10 @@ export class Question extends Entity<IQuestionProps> {
   }
 
   get excerpt() {
-    return this.content
-      .substring(0, 120)
-      .trimEnd()
-      .concat('...')
+    return this.content.substring(0, 120).trimEnd().concat('...')
   }
 
   private touch() {
     this.props.updatedAt = new Date()
-  }
-
-  set title(title: string) {
-    this.props.title = title
-    this.props.slug = Slug.createFromText(title)
-    
-    this.touch()
-  }
-
-  set content(content: string) {
-    this.props.content = content
-    this.touch()
-  }
-
-  set bestAnswerId(bestAnswerId: UniqueEntityID | undefined) {
-    this.props.bestAnswerId = bestAnswerId
-    this.touch()
   }
 }
