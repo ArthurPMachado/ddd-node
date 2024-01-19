@@ -4,7 +4,7 @@ import {
   IGetQuestionBySlugResponse,
 } from './interfaces/IGetQuestionBySlug'
 
-export class CreateQuestionUseCase {
+export class GetQuestionBySlug {
   constructor(private questionRepository: IQuestionsRepository) {}
 
   async execute({
