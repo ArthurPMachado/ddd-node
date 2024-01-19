@@ -1,7 +1,7 @@
 import { IAnswerQuestionUseCaseRequest } from './interfaces/IAnswerQuestionUseCase'
-import { Answer } from '../entities/answer'
 import { IAnswersRepository } from '../repositories/interfaces/answers-repository'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { Answer } from '../../enterprise/entities/answer'
 
 export class AnswerQuestionUseCase {
   constructor(private answersRepository: IAnswersRepository) {}

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { AnswerQuestionUseCase } from '@/domain/use-cases/answer-question'
-import { IAnswersRepository } from '@/domain/repositories/interfaces/answers-repository'
-import { Answer } from '@/domain/entities/answer'
+import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
+import { IAnswersRepository } from '@/domain/forum/application/repositories/interfaces/answers-repository'
+import { Answer } from '@/domain/forum/enterprise/entities/answer'
 
 const fakeAnswersRepository: IAnswersRepository = {
   create: async (answer: Answer) => {},
