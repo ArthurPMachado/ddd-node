@@ -34,4 +34,16 @@ describe('Fetch Recent Questions', () => {
       expect.objectContaining({ createdAt: new Date(2022, 0, 10) }),
     ])
   })
+
+  it('should be able to fetch paginated recent questions', async () => {
+    for (let index = 0; index <= 25; index++) {
+      await inMemoryQuestionsRepository.create(makeQuestion())
+    }
+
+    const { questions } = await sut.execute({
+      page: 2,
+    })
+
+    expect(questions).toHaveLength(6)
+  })
 })
