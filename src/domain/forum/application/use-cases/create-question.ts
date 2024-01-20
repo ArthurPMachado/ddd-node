@@ -1,7 +1,7 @@
 import {
   ICreateQuestionUseCaseRequest,
   ICreateQuestionUseCaseResponse,
-} from './interfaces/IQuestionUseCase'
+} from './interfaces/ICreateQuestionUseCase'
 import { IQuestionsRepository } from '../repositories/interfaces/questions-repository'
 import { Question } from '../../enterprise/entities/question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
