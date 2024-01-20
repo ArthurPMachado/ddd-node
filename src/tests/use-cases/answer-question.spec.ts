@@ -6,7 +6,7 @@ import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-r
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: AnswerQuestionUseCase
 
-describe('Create Question', () => {
+describe('Answer Question', () => {
   beforeEach(() => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository()
     sut = new AnswerQuestionUseCase(inMemoryAnswersRepository)

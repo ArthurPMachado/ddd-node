@@ -22,7 +22,7 @@ describe('Delete Answer', () => {
       new UniqueEntityID('answer-1'),
     )
 
-    inMemoryAnswersRepository.create(newAnswer)
+    await inMemoryAnswersRepository.create(newAnswer)
 
     await sut.execute({
       answerId: 'answer-1',
@@ -40,7 +40,7 @@ describe('Delete Answer', () => {
       new UniqueEntityID('answer-1'),
     )
 
-    inMemoryAnswersRepository.create(newAnswer)
+    await inMemoryAnswersRepository.create(newAnswer)
 
     expect(() => {
       return sut.execute({

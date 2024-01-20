@@ -22,7 +22,7 @@ describe('Edit Question', () => {
       new UniqueEntityID('question-1'),
     )
 
-    inMemoryQuestionsRepository.create(newQuestion)
+    await inMemoryQuestionsRepository.create(newQuestion)
 
     await sut.execute({
       authorId: 'author-1',
@@ -45,7 +45,7 @@ describe('Edit Question', () => {
       new UniqueEntityID('question-1'),
     )
 
-    inMemoryQuestionsRepository.create(newQuestion)
+    await inMemoryQuestionsRepository.create(newQuestion)
 
     expect(() => {
       return sut.execute({
