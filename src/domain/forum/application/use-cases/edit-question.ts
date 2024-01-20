@@ -28,6 +28,8 @@ export class EditQuestionUseCase {
 
     await this.questionRepository.save(question)
 
-    return {}
+    return {
+      question,
+    }
   }
 }

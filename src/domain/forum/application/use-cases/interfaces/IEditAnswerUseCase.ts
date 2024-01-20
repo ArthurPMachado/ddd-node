@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
+import { Answer } from '@/domain/forum/enterprise/entities/answer'
 
 export interface IEditAnswerUseCaseRequest {
   authorId: string
@@ -6,4 +6,6 @@ export interface IEditAnswerUseCaseRequest {
   content: string
 }
 
-export interface IEditAnswerUseCaseResponse {}
+export interface IEditAnswerUseCaseResponse {
+  answer: Answer
+}
