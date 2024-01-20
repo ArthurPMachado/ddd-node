@@ -1,15 +1,15 @@
 import { IQuestionsRepository } from '../repositories/interfaces/questions-repository'
 import {
-  IFetchRecentQuestionsRequest,
-  IFetchRecentQuestionsResponse,
+  IFetchRecentQuestionsUseCaseRequest,
+  IFetchRecentQuestionsUseCaseResponse,
 } from './interfaces/IFetchRecentQuestions'
 
-export class FetchRecentQuestions {
+export class FetchRecentQuestionsUseCase {
   constructor(private questionRepository: IQuestionsRepository) {}
 
   async execute({
     page,
-  }: IFetchRecentQuestionsRequest): Promise<IFetchRecentQuestionsResponse> {
+  }: IFetchRecentQuestionsUseCaseRequest): Promise<IFetchRecentQuestionsUseCaseResponse> {
     const questions = await this.questionRepository.findManyRecent({ page })
 
     return {

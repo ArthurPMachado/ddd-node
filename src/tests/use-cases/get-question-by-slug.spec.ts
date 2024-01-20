@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { GetQuestionBySlug } from '@/domain/forum/application/use-cases/get-question-by-slug'
+import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug'
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 import { makeQuestion } from 'test/factories/make-question'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
-let sut: GetQuestionBySlug
+let sut: GetQuestionBySlugUseCase
 
 describe('Get Question By Slug', () => {
   beforeEach(() => {
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository()
-    sut = new GetQuestionBySlug(inMemoryQuestionsRepository)
+    sut = new GetQuestionBySlugUseCase(inMemoryQuestionsRepository)
   })
 
   it('should be able to get a question by slug', async () => {

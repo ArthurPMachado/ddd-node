@@ -1,15 +1,15 @@
 import { IQuestionsRepository } from '../repositories/interfaces/questions-repository'
 import {
-  IGetQuestionBySlugRequest,
-  IGetQuestionBySlugResponse,
+  IGetQuestionBySlugUseCaseRequest,
+  IGetQuestionBySlugUseCaseResponse,
 } from './interfaces/IGetQuestionBySlug'
 
-export class GetQuestionBySlug {
+export class GetQuestionBySlugUseCase {
   constructor(private questionRepository: IQuestionsRepository) {}
 
   async execute({
     slug,
-  }: IGetQuestionBySlugRequest): Promise<IGetQuestionBySlugResponse> {
+  }: IGetQuestionBySlugUseCaseRequest): Promise<IGetQuestionBySlugUseCaseResponse> {
     const question = await this.questionRepository.findBySlug(slug)
 
     if (!question) {

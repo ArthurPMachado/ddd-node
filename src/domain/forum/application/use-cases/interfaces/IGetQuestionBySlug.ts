@@ -1,9 +1,9 @@
 import { Question } from '@/domain/forum/enterprise/entities/question'
 
-export interface IGetQuestionBySlugRequest {
+export interface IGetQuestionBySlugUseCaseRequest {
   slug: string
 }
 
-export interface IGetQuestionBySlugResponse {
+export interface IGetQuestionBySlugUseCaseResponse {
   question: Question
 }

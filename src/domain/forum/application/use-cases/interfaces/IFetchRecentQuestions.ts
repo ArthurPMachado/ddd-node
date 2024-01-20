@@ -1,9 +1,9 @@
 import { Question } from '@/domain/forum/enterprise/entities/question'
 
-export interface IFetchRecentQuestionsRequest {
+export interface IFetchRecentQuestionsUseCaseRequest {
   page: number
 }
 
-export interface IFetchRecentQuestionsResponse {
+export interface IFetchRecentQuestionsUseCaseResponse {
   questions: Question[]
 }
