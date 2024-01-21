@@ -2,7 +2,7 @@ import { IQuestionsRepository } from '../repositories/interfaces/questions-repos
 import {
   IGetQuestionBySlugUseCaseRequest,
   IGetQuestionBySlugUseCaseResponse,
-} from './interfaces/IGetQuestionBySlug'
+} from './interfaces/IGetQuestionBySlugUseCase'
 
 export class GetQuestionBySlugUseCase {
   constructor(private questionRepository: IQuestionsRepository) {}

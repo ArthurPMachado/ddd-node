@@ -2,7 +2,7 @@ import { IQuestionsRepository } from '../repositories/interfaces/questions-repos
 import {
   IFetchRecentQuestionsUseCaseRequest,
   IFetchRecentQuestionsUseCaseResponse,
-} from './interfaces/IFetchRecentQuestions'
+} from './interfaces/IFetchRecentQuestionsUseCase'
 
 export class FetchRecentQuestionsUseCase {
   constructor(private questionRepository: IQuestionsRepository) {}
