@@ -4,22 +4,22 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment-on-question'
 import { makeAnswer } from 'test/factories/make-answer'
 import { makeQuestion } from 'test/factories/make-question'
-import { InMemoryQuestionsCommentRepository } from 'test/repositories/in-memory-question-comments-repository'
+import { InMemoryquestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
-let inMemoryQuestionsCommentRepository: InMemoryQuestionsCommentRepository
+let inMemoryquestionCommentsRepository: InMemoryquestionCommentsRepository
 let sut: CommentOnQuestionUseCase
 
 describe('Comment On Question', () => {
   beforeEach(() => {
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository()
-    inMemoryQuestionsCommentRepository =
-      new InMemoryQuestionsCommentRepository()
+    inMemoryquestionCommentsRepository =
+      new InMemoryquestionCommentsRepository()
 
     sut = new CommentOnQuestionUseCase(
       inMemoryQuestionsRepository,
-      inMemoryQuestionsCommentRepository,
+      inMemoryquestionCommentsRepository,
     )
   })
 
@@ -34,7 +34,7 @@ describe('Comment On Question', () => {
       content: 'Test comment',
     })
 
-    expect(inMemoryQuestionsCommentRepository.items[0].content).toEqual(
+    expect(inMemoryquestionCommentsRepository.items[0].content).toEqual(
       'Test comment',
     )
   })
