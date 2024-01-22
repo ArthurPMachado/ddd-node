@@ -5,13 +5,13 @@ import {
 } from './interfaces/IDeleteQuestionUseCase'
 
 export class DeleteQuestionUseCase {
-  constructor(private questionRepository: IQuestionsRepository) {}
+  constructor(private questionsRepository: IQuestionsRepository) {}
 
   async execute({
     authorId,
     questionId,
   }: IDeleteQuestionUseCaseRequest): Promise<IDeleteQuestionUseCaseResponse> {
-    const question = await this.questionRepository.findById(questionId)
+    const question = await this.questionsRepository.findById(questionId)
 
     if (!question) {
       throw new Error('Question not found.')
@@ -21,7 +21,7 @@ export class DeleteQuestionUseCase {
       throw new Error('Not allowed.')
     }
 
-    await this.questionRepository.delete(question)
+    await this.questionsRepository.delete(question)
 
     return {}
   }

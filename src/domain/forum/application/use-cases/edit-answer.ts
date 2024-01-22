@@ -5,14 +5,14 @@ import {
 } from './interfaces/IEditAnswerUseCase'
 
 export class EditAnswerUseCase {
-  constructor(private answerRepository: IAnswersRepository) {}
+  constructor(private answersRepository: IAnswersRepository) {}
 
   async execute({
     authorId,
     answerId,
     content,
   }: IEditAnswerUseCaseRequest): Promise<IEditAnswerUseCaseResponse> {
-    const answer = await this.answerRepository.findById(answerId)
+    const answer = await this.answersRepository.findById(answerId)
 
     if (!answer) {
       throw new Error('Answer not found.')
@@ -24,7 +24,7 @@ export class EditAnswerUseCase {
 
     answer.content = content
 
-    await this.answerRepository.save(answer)
+    await this.answersRepository.save(answer)
 
     return {
       answer,

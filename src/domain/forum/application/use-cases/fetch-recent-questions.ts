@@ -5,12 +5,12 @@ import {
 } from './interfaces/IFetchRecentQuestionsUseCase'
 
 export class FetchRecentQuestionsUseCase {
-  constructor(private questionRepository: IQuestionsRepository) {}
+  constructor(private questionsRepository: IQuestionsRepository) {}
 
   async execute({
     page,
   }: IFetchRecentQuestionsUseCaseRequest): Promise<IFetchRecentQuestionsUseCaseResponse> {
-    const questions = await this.questionRepository.findManyRecent({ page })
+    const questions = await this.questionsRepository.findManyRecent({ page })
 
     return {
       questions,

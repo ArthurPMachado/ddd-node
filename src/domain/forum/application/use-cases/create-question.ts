@@ -7,7 +7,7 @@ import { Question } from '../../enterprise/entities/question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 export class CreateQuestionUseCase {
-  constructor(private questionRepository: IQuestionsRepository) {}
+  constructor(private questionsRepository: IQuestionsRepository) {}
 
   async execute({
     authorId,
@@ -20,7 +20,7 @@ export class CreateQuestionUseCase {
       content,
     })
 
-    await this.questionRepository.create(question)
+    await this.questionsRepository.create(question)
 
     return {
       question,
