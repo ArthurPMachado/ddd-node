@@ -1,3 +1,4 @@
+import { right } from '@/core/either'
 import { IAnswersRepository } from '../repositories/interfaces/answers-repository'
 import {
   IFetchQuestionAnswersUseCaseRequest,
@@ -16,8 +17,8 @@ export class FetchQuestionAnswersUseCase {
       { page },
     )
 
-    return {
+    return right({
       answers,
-    }
+    })
   }
 }

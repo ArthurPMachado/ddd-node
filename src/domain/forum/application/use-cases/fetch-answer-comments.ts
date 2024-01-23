@@ -1,3 +1,4 @@
+import { right } from '@/core/either'
 import { IAnswerCommentsRepository } from '../repositories/interfaces/answer-comments-repository'
 import {
   IFetchAnswerCommentsUseCaseRequest,
@@ -16,8 +17,8 @@ export class FetchAnswerCommentsUseCase {
         page,
       })
 
-    return {
+    return right({
       answerComments,
-    }
+    })
   }
 }

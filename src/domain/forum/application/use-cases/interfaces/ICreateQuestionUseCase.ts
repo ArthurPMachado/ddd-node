@@ -1,3 +1,4 @@
+import { Either } from '@/core/either'
 import { Question } from '@/domain/forum/enterprise/entities/question'
 
 export interface ICreateQuestionUseCaseRequest {
@@ -6,6 +7,9 @@ export interface ICreateQuestionUseCaseRequest {
   content: string
 }
 
-export interface ICreateQuestionUseCaseResponse {
-  question: Question
-}
+export type ICreateQuestionUseCaseResponse = Either<
+  null,
+  {
+    question: Question
+  }
+>

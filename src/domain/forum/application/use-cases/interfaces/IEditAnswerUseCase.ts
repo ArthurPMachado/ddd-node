@@ -1,4 +1,7 @@
+import { Either } from '@/core/either'
 import { Answer } from '@/domain/forum/enterprise/entities/answer'
+import { ResourceNotFoundError } from '../errors/resource-not-found-error'
+import { NotAllowedError } from '../errors/not-allowed-error'
 
 export interface IEditAnswerUseCaseRequest {
   authorId: string
@@ -6,6 +9,9 @@ export interface IEditAnswerUseCaseRequest {
   content: string
 }
 
-export interface IEditAnswerUseCaseResponse {
-  answer: Answer
-}
+export type IEditAnswerUseCaseResponse = Either<
+  ResourceNotFoundError | NotAllowedError,
+  {
+    answer: Answer
+  }
+>

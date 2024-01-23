@@ -1,3 +1,4 @@
+import { right } from '@/core/either'
 import { IQuestionsRepository } from '../repositories/interfaces/questions-repository'
 import {
   IFetchRecentQuestionsUseCaseRequest,
@@ -12,8 +13,8 @@ export class FetchRecentQuestionsUseCase {
   }: IFetchRecentQuestionsUseCaseRequest): Promise<IFetchRecentQuestionsUseCaseResponse> {
     const questions = await this.questionsRepository.findManyRecent({ page })
 
-    return {
+    return right({
       questions,
-    }
+    })
   }
 }

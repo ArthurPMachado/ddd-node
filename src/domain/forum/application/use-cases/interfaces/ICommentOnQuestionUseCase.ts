@@ -1,4 +1,6 @@
+import { Either } from '@/core/either'
 import { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment'
+import { ResourceNotFoundError } from '../errors/resource-not-found-error'
 
 export interface ICommentOnQuestionUseCaseRequest {
   authorId: string
@@ -6,6 +8,9 @@ export interface ICommentOnQuestionUseCaseRequest {
   content: string
 }
 
-export interface ICommentOnQuestionUseCaseResponse {
-  questionComment: QuestionComment
-}
+export type ICommentOnQuestionUseCaseResponse = Either<
+  ResourceNotFoundError,
+  {
+    questionComment: QuestionComment
+  }
+>

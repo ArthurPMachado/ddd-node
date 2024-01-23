@@ -1,3 +1,4 @@
+import { Either } from '@/core/either'
 import { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment'
 
 export interface IFetchQuestionCommentsUseCaseRequest {
@@ -5,6 +6,9 @@ export interface IFetchQuestionCommentsUseCaseRequest {
   page: number
 }
 
-export interface IFetchQuestionCommentsUseCaseResponse {
-  questionComments: QuestionComment[]
-}
+export type IFetchQuestionCommentsUseCaseResponse = Either<
+  null,
+  {
+    questionComments: QuestionComment[]
+  }
+>

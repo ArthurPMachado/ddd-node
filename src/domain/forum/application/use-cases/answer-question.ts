@@ -5,6 +5,7 @@ import {
 import { IAnswersRepository } from '../repositories/interfaces/answers-repository'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { Answer } from '../../enterprise/entities/answer'
+import { right } from '@/core/either'
 
 export class AnswerQuestionUseCase {
   constructor(private answersRepository: IAnswersRepository) {}
@@ -22,8 +23,8 @@ export class AnswerQuestionUseCase {
 
     await this.answersRepository.create(answer)
 
-    return {
+    return right({
       answer,
-    }
+    })
   }
 }

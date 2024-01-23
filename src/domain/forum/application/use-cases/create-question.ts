@@ -5,6 +5,7 @@ import {
 import { IQuestionsRepository } from '../repositories/interfaces/questions-repository'
 import { Question } from '../../enterprise/entities/question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { right } from '@/core/either'
 
 export class CreateQuestionUseCase {
   constructor(private questionsRepository: IQuestionsRepository) {}
@@ -22,8 +23,8 @@ export class CreateQuestionUseCase {
 
     await this.questionsRepository.create(question)
 
-    return {
+    return right({
       question,
-    }
+    })
   }
 }

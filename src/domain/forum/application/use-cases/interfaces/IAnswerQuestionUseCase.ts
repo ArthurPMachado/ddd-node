@@ -1,3 +1,4 @@
+import { Either } from '@/core/either'
 import { Answer } from '@/domain/forum/enterprise/entities/answer'
 
 export interface IAnswerQuestionUseCaseRequest {
@@ -6,6 +7,9 @@ export interface IAnswerQuestionUseCaseRequest {
   content: string
 }
 
-export interface IAnswerQuestionUseCaseResponse {
-  answer: Answer
-}
+export type IAnswerQuestionUseCaseResponse = Either<
+  null,
+  {
+    answer: Answer
+  }
+>
