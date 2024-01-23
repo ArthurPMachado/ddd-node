@@ -3,6 +3,7 @@ import {
   IDeleteQuestionCommentUseCaseResponse,
 } from './interfaces/IDeleteQuestionCommentUseCase'
 import { IQuestionCommentsRepository } from '../repositories/interfaces/question-comments-repository'
+import { left, right } from '@/core/either'
 
 export class DeleteQuestionCommentUseCase {
   constructor(
@@ -17,15 +18,15 @@ export class DeleteQuestionCommentUseCase {
       await this.questionCommentsRepository.findById(questionCommentId)
 
     if (!questionComment) {
-      throw new Error('Question comment not found.')
+      return left('Question comment not found.')
     }
 
     if (questionComment.authorId.toString() !== authorId) {
-      throw new Error('Not allowed')
+      return left('Not allowed')
     }
 
     await this.questionCommentsRepository.delete(questionComment)
 
-    return {}
+    return right({})
   }
 }
