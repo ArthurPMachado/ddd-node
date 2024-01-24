@@ -6,15 +6,23 @@ import {
 } from './interfaces/IEditQuestionUseCase'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 import { NotAllowedError } from './errors/not-allowed-error'
+import { IQuestionAttachmentsRepository } from '../repositories/interfaces/question-attachments-repository'
+import { QuestionAttachmentList } from '../../enterprise/entities/question-attachment-list'
+import { QuestionAttachment } from '../../enterprise/entities/question-attachment'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 export class EditQuestionUseCase {
-  constructor(private questionsRepository: IQuestionsRepository) {}
+  constructor(
+    private questionsRepository: IQuestionsRepository,
+    private questionAttachmentsRepository: IQuestionAttachmentsRepository,
+  ) {}
 
   async execute({
     authorId,
     questionId,
     title,
     content,
+    attachmentsIds,
   }: IEditQuestionUseCaseRequest): Promise<IEditQuestionUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId)
 
@@ -26,8 +34,25 @@ export class EditQuestionUseCase {
       return left(new NotAllowedError())
     }
 
+    const currentQuestionAttachments =
+      await this.questionAttachmentsRepository.findManyByQuestionId(questionId)
+
+    const questionAttachmentList = new QuestionAttachmentList(
+      currentQuestionAttachments,
+    )
+
+    const questionAttachments = attachmentsIds.map((attachmentsId) => {
+      return QuestionAttachment.create({
+        attachmentId: new UniqueEntityID(attachmentsId),
+        questionId: question.id,
+      })
+    })
+
+    questionAttachmentList.update(questionAttachments)
+
     question.title = title
     question.content = content
+    question.attachments = questionAttachmentList
 
     await this.questionsRepository.save(question)
 
