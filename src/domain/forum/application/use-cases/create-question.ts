@@ -6,6 +6,7 @@ import { IQuestionsRepository } from '../repositories/interfaces/questions-repos
 import { Question } from '../../enterprise/entities/question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { right } from '@/core/either'
+import { QuestionAttachment } from '../../enterprise/entities/question-attachment'
 
 export class CreateQuestionUseCase {
   constructor(private questionsRepository: IQuestionsRepository) {}
@@ -14,12 +15,22 @@ export class CreateQuestionUseCase {
     authorId,
     title,
     content,
+    attachmentsIds,
   }: ICreateQuestionUseCaseRequest): Promise<ICreateQuestionUseCaseResponse> {
     const question = Question.create({
       authorId: new UniqueEntityID(authorId),
       title,
       content,
     })
+
+    const questionAttachments = attachmentsIds.map((attachmentsId) => {
+      return QuestionAttachment.create({
+        attachmentId: new UniqueEntityID(attachmentsId),
+        questionId: question.id,
+      })
+    })
+
+    question.attachments = questionAttachments
 
     await this.questionsRepository.create(question)
 

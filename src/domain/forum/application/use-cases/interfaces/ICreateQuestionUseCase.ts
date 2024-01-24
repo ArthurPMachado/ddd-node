@@ -5,6 +5,7 @@ export interface ICreateQuestionUseCaseRequest {
   authorId: string
   title: string
   content: string
+  attachmentsIds: string[]
 }
 
 export type ICreateQuestionUseCaseResponse = Either<

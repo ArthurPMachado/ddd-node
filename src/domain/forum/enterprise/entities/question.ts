@@ -4,16 +4,18 @@ import { IQuestionProps } from './interfaces/IQuestionProps'
 import { Optional } from '@/core/types/optional'
 import { Slug } from './value-objects/slug'
 import { AggregateRoot } from '@/core/entities/aggregate-root'
+import { QuestionAttachment } from './question-attachment'
 
 export class Question extends AggregateRoot<IQuestionProps> {
   static create(
-    props: Optional<IQuestionProps, 'createdAt' | 'slug'>,
+    props: Optional<IQuestionProps, 'createdAt' | 'slug' | 'attachments'>,
     id?: UniqueEntityID,
   ) {
     const question = new Question(
       {
         ...props,
         slug: props.slug ?? Slug.createFromText(props.title),
+        attachments: props.attachments ?? [],
         createdAt: props.createdAt ?? new Date(),
       },
       id,
@@ -57,6 +59,14 @@ export class Question extends AggregateRoot<IQuestionProps> {
   set content(content: string) {
     this.props.content = content
     this.touch()
+  }
+
+  get attachments() {
+    return this.props.attachments
+  }
+
+  set attachments(attachments: QuestionAttachment[]) {
+    this.props.attachments = attachments
   }
 
   get createdAt() {
