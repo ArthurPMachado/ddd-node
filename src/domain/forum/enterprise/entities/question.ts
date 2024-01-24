@@ -4,7 +4,7 @@ import { IQuestionProps } from './interfaces/IQuestionProps'
 import { Optional } from '@/core/types/optional'
 import { Slug } from './value-objects/slug'
 import { AggregateRoot } from '@/core/entities/aggregate-root'
-import { QuestionAttachment } from './question-attachment'
+import { QuestionAttachmentList } from './question-attachment-list'
 
 export class Question extends AggregateRoot<IQuestionProps> {
   static create(
@@ -15,7 +15,7 @@ export class Question extends AggregateRoot<IQuestionProps> {
       {
         ...props,
         slug: props.slug ?? Slug.createFromText(props.title),
-        attachments: props.attachments ?? [],
+        attachments: props.attachments ?? new QuestionAttachmentList(),
         createdAt: props.createdAt ?? new Date(),
       },
       id,
@@ -65,7 +65,7 @@ export class Question extends AggregateRoot<IQuestionProps> {
     return this.props.attachments
   }
 
-  set attachments(attachments: QuestionAttachment[]) {
+  set attachments(attachments: QuestionAttachmentList) {
     this.props.attachments = attachments
   }
 
