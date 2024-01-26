@@ -3,9 +3,9 @@ import {
   IDeleteAnswerCommentUseCaseResponse,
 } from './interfaces/IDeleteAnswerCommentUseCase'
 import { IAnswerCommentsRepository } from '../repositories/interfaces/answer-comments-repository'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
 import { left, right } from '@/core/either'
-import { NotAllowedError } from './errors/not-allowed-error'
+import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 
 export class DeleteAnswerCommentUseCase {
   constructor(private answerCommentsRepository: IAnswerCommentsRepository) {}

@@ -7,7 +7,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { IQuestionCommentsRepository } from '../repositories/interfaces/question-comments-repository'
 import { QuestionComment } from '../../enterprise/entities/question-comment'
 import { left, right } from '@/core/either'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
 
 export class CommentOnQuestionUseCase {
   constructor(

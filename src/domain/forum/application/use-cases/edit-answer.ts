@@ -4,8 +4,8 @@ import {
   IEditAnswerUseCaseRequest,
   IEditAnswerUseCaseResponse,
 } from './interfaces/IEditAnswerUseCase'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
-import { NotAllowedError } from './errors/not-allowed-error'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
+import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 import { IAnswerAttachmentsRepository } from '../repositories/interfaces/answer-attachments-repository'
 import { AnswerAttachmentList } from '../../enterprise/entities/answer-attachment-list'
 import { AnswerAttachment } from '../../enterprise/entities/answer-attachment'

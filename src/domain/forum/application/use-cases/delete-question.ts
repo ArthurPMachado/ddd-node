@@ -4,8 +4,8 @@ import {
   IDeleteQuestionUseCaseRequest,
   IDeleteQuestionUseCaseResponse,
 } from './interfaces/IDeleteQuestionUseCase'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
-import { NotAllowedError } from './errors/not-allowed-error'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
+import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 
 export class DeleteQuestionUseCase {
   constructor(private questionsRepository: IQuestionsRepository) {}

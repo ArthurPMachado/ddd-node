@@ -1,7 +1,7 @@
 import { Either } from '@/core/either'
 import { Answer } from '@/domain/forum/enterprise/entities/answer'
-import { ResourceNotFoundError } from '../errors/resource-not-found-error'
-import { NotAllowedError } from '../errors/not-allowed-error'
+import { ResourceNotFoundError } from '../@/core/errors/errors/resource-not-found-error'
+import { NotAllowedError } from '../@/core/errors/errors/not-allowed-error'
 
 export interface IEditAnswerUseCaseRequest {
   authorId: string

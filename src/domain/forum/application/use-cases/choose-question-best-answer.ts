@@ -5,8 +5,8 @@ import {
 import { IAnswersRepository } from '../repositories/interfaces/answers-repository'
 import { IQuestionsRepository } from '../repositories/interfaces/questions-repository'
 import { left, right } from '@/core/either'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
-import { NotAllowedError } from './errors/not-allowed-error'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
+import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 
 export class ChooseQuestionBestAnswerUseCase {
   constructor(
