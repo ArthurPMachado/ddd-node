@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { SendNotificationUseCase } from '@/domain/notification/application/use-cases/send-notification'
 import { InMemoryNotificationsRepository } from 'test/repositories/in-memory-notifications-repository'
 
