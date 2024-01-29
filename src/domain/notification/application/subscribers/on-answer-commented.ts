@@ -20,7 +20,7 @@ export class OnAnswerCommented implements EventHandler {
   }
 
   private async sendNewAnswerNotification({
-    answer: answerComment,
+    answerComment,
   }: AnswerCommentedEvent) {
     const answer = await this.answersRepository.findById(
       answerComment.answerId.toString(),

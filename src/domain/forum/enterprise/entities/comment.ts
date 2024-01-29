@@ -1,9 +1,9 @@
+import { AggregateRoot } from '@/core/entities/aggregate-root'
 import { ICommentProps } from './interfaces/ICommentProps'
-import { Entity } from '@/core/entities/entity'
 
 export abstract class Comment<
   Props extends ICommentProps,
-> extends Entity<Props> {
+> extends AggregateRoot<Props> {
   get authorId() {
     return this.props.authorId
   }

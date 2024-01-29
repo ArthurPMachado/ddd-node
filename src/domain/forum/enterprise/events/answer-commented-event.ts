@@ -4,14 +4,14 @@ import { AnswerComment } from '../entities/answer-comment'
 
 export class AnswerCommentedEvent implements DomainEvent {
   public ocurredAt: Date
-  public answer: AnswerComment
+  public answerComment: AnswerComment
 
-  constructor(answer: AnswerComment) {
-    this.answer = answer
+  constructor(answerComment: AnswerComment) {
+    this.answerComment = answerComment
     this.ocurredAt = new Date()
   }
 
   public getAggregateId(): UniqueEntityID {
-    return this.answer.id
+    return this.answerComment.id
   }
 }
