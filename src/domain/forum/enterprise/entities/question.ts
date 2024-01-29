@@ -5,7 +5,7 @@ import { Optional } from '@/core/types/optional'
 import { Slug } from './value-objects/slug'
 import { AggregateRoot } from '@/core/entities/aggregate-root'
 import { QuestionAttachmentList } from './question-attachment-list'
-import { QuestionBestAnswerChosenEvent } from '../events/question-best-answer-chosen'
+import { QuestionBestAnswerChosenEvent } from '../events/question-best-answer-chosen-event'
 
 export class Question extends AggregateRoot<IQuestionProps> {
   static create(
