@@ -1,4 +1,4 @@
-# Forum app
+# Forum app enterprise and application rules
 
 ## A Node app for users to interact in a Q&A format, build on Domain Driven Design concepts
 
